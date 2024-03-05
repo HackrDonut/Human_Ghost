@@ -1,2 +1,3 @@
-res://basic_player.tscn
 res://multiplayer_test.tscn
+res://multiplayer_test.gd
+res://basic_player.tscn
