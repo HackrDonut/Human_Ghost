@@ -1,8 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709656529
+::res://::1709744811
 basic_player.gd::GDScript::-1::1709570401::0::1::::<>CharacterBody2D<>::
-basic_player.tscn::PackedScene::6905576191803337343::1709572139::0::1::::<><>::res://basic_player.gd<>uid://y3lilyp8gxu7::::res://icon.svg
+basic_player.tscn::PackedScene::6905576191803337343::1709744800::0::1::::<><>::res://basic_player.gd<>uid://y3lilyp8gxu7::::res://icon.svg
+ghost.gd::GDScript::-1::1709744715::0::1::::<>CharacterBody2D<>::
+ghost.tscn::PackedScene::5177973977791284254::1709744800::0::1::::<><>::uid://rilmbmovcbu0::::res://ghost_dot.png<>res://ghost.gd
+ghost_dot.png::CompressedTexture2D::1210414752051561189::1709743417::1709743418::1::::<><>::
 icon.svg::CompressedTexture2D::1743017613256172356::1709569620::1709569631::1::::<><>::
-multiplayer_test.gd::GDScript::-1::1709572185::0::1::::<>Node2D<>::
-multiplayer_test.tscn::PackedScene::1547430204455515127::1709572436::0::1::::<><>::res://multiplayer_test.gd<>uid://c5nd3iuea3p8b::::res://basic_player.tscn
+multiplayer_test.gd::GDScript::-1::1709744512::0::1::::<>Node2D<>::
+multiplayer_test.tscn::PackedScene::1547430204455515127::1709744800::0::1::::<><>::res://multiplayer_test.gd<>uid://c5nd3iuea3p8b::::res://basic_player.tscn<>uid://cf1iqe8twdqyw::::res://ghost.tscn
 README.md::TextFile::-1::1709570784::0::1::::<><>::

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://wbt7jqvmasvf"]
+[gd_scene load_steps=4 format=3 uid="uid://wbt7jqvmasvf"]
 
 [ext_resource type="Script" path="res://multiplayer_test.gd" id="1_lboko"]
 [ext_resource type="PackedScene" uid="uid://c5nd3iuea3p8b" path="res://basic_player.tscn" id="2_b43b3"]
+[ext_resource type="PackedScene" uid="uid://cf1iqe8twdqyw" path="res://ghost.tscn" id="3_6eq2a"]
 
 [node name="Multiplayer_Test" type="Node2D"]
 script = ExtResource("1_lboko")
 player_scene = ExtResource("2_b43b3")
+ghost_scene = ExtResource("3_6eq2a")
 
 [node name="host" type="Button" parent="."]
 offset_left = 28.0
@@ -22,7 +24,7 @@ offset_bottom = 605.0
 text = "Join"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://basic_player.tscn")
+_spawnable_scenes = PackedStringArray("res://basic_player.tscn", "res://ghost.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
