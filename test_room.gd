@@ -3,14 +3,16 @@ extends Node2D
 var peer = ENetMultiplayerPeer.new()
 @export var player_scene: PackedScene
 @export var ghost_scene: PackedScene
-# @export var ip = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
 
-func _on_host_pressed():
+# Called when the node enters the scene tree for the first time.
+func _ready():
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(_add_ghost)
 	_add_player()
-	# print(ip)
+	
+	peer.create_client("172.29.19.153", 135)
+	multiplayer.multiplayer_peer = peer
 
 func _add_player(id = 1):
 	var player = player_scene.instantiate()
@@ -22,10 +24,7 @@ func _add_ghost(id = 1):
 	ghost.name = str(id)
 	call_deferred("add_child",ghost)
 
-func _on_join_pressed():
-	peer.create_client("172.29.19.153", 135)
-	multiplayer.multiplayer_peer = peer
 
-
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://test_room.tscn")
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

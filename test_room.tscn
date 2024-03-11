@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6ajgt3l3thxh"]
+
+[ext_resource type="Script" path="res://test_room.gd" id="1_hfoph"]
+[ext_resource type="Texture2D" uid="uid://xmvvv148y6kl" path="res://41RFIkNChDS._UXNaN_FMjpg_QL85_.jpg" id="1_yyn1x"]
+[ext_resource type="PackedScene" uid="uid://c5nd3iuea3p8b" path="res://basic_player.tscn" id="2_h41bp"]
+[ext_resource type="PackedScene" uid="uid://cf1iqe8twdqyw" path="res://ghost.tscn" id="3_30qxm"]
+
+[node name="test_room" type="Node2D"]
+script = ExtResource("1_hfoph")
+player_scene = ExtResource("2_h41bp")
+ghost_scene = ExtResource("3_30qxm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_yyn1x")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]

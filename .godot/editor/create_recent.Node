@@ -1,5 +1,6 @@
+MultiplayerSpawner
+Button
+TextureRect
 MultiplayerSynchronizer
 Sprite2D
 CharacterBody2D
-MultiplayerSpawner
-Button
