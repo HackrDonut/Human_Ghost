@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+var talisman = false
+var closed_door = true
+var push = false
+var press_button = true
+
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 

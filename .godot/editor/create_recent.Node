@@ -1,6 +1,9 @@
+CollisionShape2D
+Area2D
+AnimatedSprite2D
+Sprite2D
 MultiplayerSpawner
 Button
 TextureRect
 MultiplayerSynchronizer
-Sprite2D
 CharacterBody2D

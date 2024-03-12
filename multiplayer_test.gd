@@ -26,6 +26,18 @@ func _on_join_pressed():
 	peer.create_client("172.29.19.153", 135)
 	multiplayer.multiplayer_peer = peer
 
+func _on_host_area_mouse_entered():
+	$button_sprite_1.play("host_pressed")
 
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://test_room.tscn")
+func _on_host_area_mouse_exited():
+	$button_sprite_1.play("host_idle")
+
+func _on_join_area_mouse_entered():
+	$button_sprite_2.play("join_pressed")
+
+func _on_join_area_mouse_exited():
+	$button_sprite_2.play("join_idle")
+
+func _on_door_area_body_entered(body):
+	if body.name == "1": # Human, not ghost
+		body.velocity = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * 0

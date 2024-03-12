@@ -1,8 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://wbt7jqvmasvf"]
+[gd_scene load_steps=14 format=3 uid="uid://wbt7jqvmasvf"]
 
 [ext_resource type="Script" path="res://multiplayer_test.gd" id="1_lboko"]
 [ext_resource type="PackedScene" uid="uid://c5nd3iuea3p8b" path="res://basic_player.tscn" id="2_b43b3"]
 [ext_resource type="PackedScene" uid="uid://cf1iqe8twdqyw" path="res://ghost.tscn" id="3_6eq2a"]
+[ext_resource type="Texture2D" uid="uid://dxrryqrrd3n36" path="res://button (1).png" id="4_tu30m"]
+[ext_resource type="Texture2D" uid="uid://ba0q88jl2s5jq" path="res://ghost_door.png" id="5_icis3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08k2h"]
+atlas = ExtResource("4_tu30m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brfjy"]
+atlas = ExtResource("4_tu30m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gobqa"]
+atlas = ExtResource("4_tu30m")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cc7d"]
+atlas = ExtResource("4_tu30m")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvda8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08k2h")
+}],
+"loop": true,
+"name": &"host_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brfjy")
+}],
+"loop": true,
+"name": &"host_pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gobqa")
+}],
+"loop": true,
+"name": &"join_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cc7d")
+}],
+"loop": true,
+"name": &"join_pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7s7a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jl2to"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_durd0"]
+size = Vector2(32, 32.0722)
 
 [node name="Multiplayer_Test" type="Node2D"]
 script = ExtResource("1_lboko")
@@ -10,6 +70,7 @@ player_scene = ExtResource("2_b43b3")
 ghost_scene = ExtResource("3_6eq2a")
 
 [node name="host" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = 28.0
 offset_top = 493.0
 offset_right = 134.0
@@ -17,6 +78,7 @@ offset_bottom = 541.0
 text = "Host"
 
 [node name="join" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 offset_left = 28.0
 offset_top = 557.0
 offset_right = 134.0
@@ -27,13 +89,50 @@ text = "Join"
 _spawnable_scenes = PackedStringArray("res://basic_player.tscn", "res://ghost.tscn")
 spawn_path = NodePath("..")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 988.0
-offset_top = 551.0
-offset_right = 1110.0
-offset_bottom = 613.0
-text = "Test Room"
+[node name="button_sprite_1" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(55, 499)
+scale = Vector2(2.53125, 2.53125)
+sprite_frames = SubResource("SpriteFrames_nvda8")
+animation = &"host_idle"
+
+[node name="host_area" type="Area2D" parent="button_sprite_1"]
+
+[node name="host_coll" type="CollisionShape2D" parent="button_sprite_1/host_area"]
+shape = SubResource("CircleShape2D_c7s7a")
+
+[node name="button_sprite_2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(55, 577)
+scale = Vector2(2.531, 2.531)
+sprite_frames = SubResource("SpriteFrames_nvda8")
+animation = &"join_idle"
+
+[node name="join_area" type="Area2D" parent="button_sprite_2"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="join_coll" type="CollisionShape2D" parent="button_sprite_2/join_area"]
+shape = SubResource("CircleShape2D_jl2to")
+
+[node name="GhostDoor" type="Sprite2D" parent="."]
+position = Vector2(374, 314)
+scale = Vector2(1.375, 6.92188)
+texture = ExtResource("5_icis3")
+
+[node name="door_area" type="Area2D" parent="GhostDoor"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="door_coll" type="CollisionShape2D" parent="GhostDoor/door_area"]
+position = Vector2(-3.05176e-05, -3.8147e-06)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_durd0")
 
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="button_sprite_1/host_area" to="." method="_on_host_area_mouse_entered"]
+[connection signal="mouse_exited" from="button_sprite_1/host_area" to="." method="_on_host_area_mouse_exited"]
+[connection signal="mouse_entered" from="button_sprite_2/join_area" to="." method="_on_join_area_mouse_entered"]
+[connection signal="mouse_exited" from="button_sprite_2/join_area" to="." method="_on_join_area_mouse_exited"]
+[connection signal="body_entered" from="GhostDoor/door_area" to="." method="_on_door_area_body_entered"]

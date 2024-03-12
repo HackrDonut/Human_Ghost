@@ -18,8 +18,8 @@ script = ExtResource("1_nk4f6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(92.25, 95.25)
-scale = Vector2(6.04688, 6.04688)
+position = Vector2(209, 89.9999)
+scale = Vector2(2.70313, 2.63281)
 texture = ExtResource("1_g0x2j")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

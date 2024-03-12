@@ -1,12 +1,17 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1710171229
+::res://::1710258476
 41RFIkNChDS._UXNaN_FMjpg_QL85_.jpg::CompressedTexture2D::1640429639761534411::1710171229::1710171230::1::::<><>::
-basic_player.gd::GDScript::-1::1709574001::0::1::::<>CharacterBody2D<>::
-basic_player.tscn::PackedScene::6905576191803337343::1710170926::0::1::::<><>::res://basic_player.gd<>uid://y3lilyp8gxu7::::res://icon.svg
-ghost.gd::GDScript::-1::1709748315::0::1::::<>CharacterBody2D<>::
-ghost.tscn::PackedScene::5177973977791284254::1710170927::0::1::::<><>::uid://rilmbmovcbu0::::res://ghost_dot.png<>res://ghost.gd
+basic_player.gd::GDScript::-1::1710172747::0::1::::<>CharacterBody2D<>::
+basic_player.tscn::PackedScene::6905576191803337343::1710258348::0::1::::<><>::res://basic_player.gd<>uid://y3lilyp8gxu7::::res://icon.svg
+button (1).png::CompressedTexture2D::8809775791916616699::1710257569::1710257569::1::::<><>::
+button.png::CompressedTexture2D::2671813027110528769::1710173285::1710173285::1::::<><>::
+ghost.gd::GDScript::-1::1710172769::0::1::::<>CharacterBody2D<>::
+ghost.tscn::PackedScene::5177973977791284254::1710258348::0::1::::<><>::uid://rilmbmovcbu0::::res://ghost_dot.png<>res://ghost.gd
+ghost_door.png::CompressedTexture2D::2439062278338128154::1710258476::1710258476::1::::<><>::
 ghost_dot.png::CompressedTexture2D::1210414752051561189::1709747017::1709747018::1::::<><>::
 icon.svg::CompressedTexture2D::1743017613256172356::1709573220::1709573231::1::::<><>::
-multiplayer_test.gd::GDScript::-1::1709748112::0::1::::<>Node2D<>::
-multiplayer_test.tscn::PackedScene::1547430204455515127::1710170926::0::1::::<><>::res://multiplayer_test.gd<>uid://c5nd3iuea3p8b::::res://basic_player.tscn<>uid://cf1iqe8twdqyw::::res://ghost.tscn
+multiplayer_test.gd::GDScript::-1::1710258347::0::1::::<>Node2D<>::
+multiplayer_test.tscn::PackedScene::1547430204455515127::1710258366::0::1::::<><>::res://multiplayer_test.gd<>uid://c5nd3iuea3p8b::::res://basic_player.tscn<>uid://cf1iqe8twdqyw::::res://ghost.tscn<>uid://dxrryqrrd3n36::::res://button (1).png
 README.md::TextFile::-1::1709574384::0::1::::<><>::
+test_room.gd::GDScript::-1::1710172336::0::1::::<>RefCounted<>::
+test_room.tscn::PackedScene::4562833045906571625::1710172276::0::1::::<><>::res://test_room.gd<>uid://xmvvv148y6kl::::res://41RFIkNChDS._UXNaN_FMjpg_QL85_.jpg<>uid://c5nd3iuea3p8b::::res://basic_player.tscn<>uid://cf1iqe8twdqyw::::res://ghost.tscn

@@ -16,3 +16,5 @@ offset_bottom = 40.0
 texture = ExtResource("1_yyn1x")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://basic_player.tscn", "res://ghost.tscn")
+spawn_path = NodePath("..")
