@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://wbt7jqvmasvf"]
+[gd_scene load_steps=17 format=3 uid="uid://wbt7jqvmasvf"]
 
 [ext_resource type="Script" path="res://multiplayer_test.gd" id="1_lboko"]
 [ext_resource type="PackedScene" uid="uid://c5nd3iuea3p8b" path="res://basic_player.tscn" id="2_b43b3"]
 [ext_resource type="PackedScene" uid="uid://cf1iqe8twdqyw" path="res://ghost.tscn" id="3_6eq2a"]
 [ext_resource type="Texture2D" uid="uid://dxrryqrrd3n36" path="res://button (1).png" id="4_tu30m"]
-[ext_resource type="Texture2D" uid="uid://ba0q88jl2s5jq" path="res://ghost_door.png" id="5_icis3"]
+[ext_resource type="Texture2D" uid="uid://onlt6680okur" path="res://super-bazza-bogan/block.png" id="5_arkwh"]
+[ext_resource type="Texture2D" uid="uid://cjmuse00lsbrc" path="res://super-bazza-bogan/brick.png" id="6_qd4bm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_08k2h"]
 atlas = ExtResource("4_tu30m")
@@ -61,8 +62,30 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jl2to"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_durd0"]
-size = Vector2(32, 32.0722)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_16u7q"]
+texture = ExtResource("5_arkwh")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ie7xu"]
+texture = ExtResource("6_qd4bm")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_o1eie"]
+physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 2
+physics_layer_1/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_16u7q")
+sources/1 = SubResource("TileSetAtlasSource_ie7xu")
 
 [node name="Multiplayer_Test" type="Node2D"]
 script = ExtResource("1_lboko")
@@ -115,19 +138,10 @@ collision_mask = 3
 [node name="join_coll" type="CollisionShape2D" parent="button_sprite_2/join_area"]
 shape = SubResource("CircleShape2D_jl2to")
 
-[node name="GhostDoor" type="Sprite2D" parent="."]
-position = Vector2(374, 314)
-scale = Vector2(1.375, 6.92188)
-texture = ExtResource("5_icis3")
-
-[node name="door_area" type="Area2D" parent="GhostDoor"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="door_coll" type="CollisionShape2D" parent="GhostDoor/door_area"]
-position = Vector2(-3.05176e-05, -3.8147e-06)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_durd0")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_o1eie")
+format = 2
+layer_0/tile_data = PackedInt32Array(262159, 0, 0, 327695, 0, 0, 393231, 0, 0, 458767, 0, 0, 524303, 0, 0, 589839, 0, 0, 655375, 0, 0, 720912, 0, 0, 786448, 0, 0, 851984, 0, 0, 917520, 0, 0, 983056, 0, 0, 1048592, 0, 0, 1114128, 0, 0, 1179664, 0, 0, 1245200, 0, 0, 1310736, 0, 0, 1376272, 0, 0, 1441808, 0, 0, 1507345, 0, 0, 1572881, 0, 0, 327705, 1, 0, 393241, 1, 0, 458778, 1, 0, 524314, 1, 0, 589850, 1, 0, 655386, 1, 0, 720922, 1, 0, 786459, 1, 0, 851995, 1, 0, 917531, 1, 0, 983067, 1, 0, 1048604, 1, 0, 1114140, 1, 0, 1179676, 1, 0, 1245212, 1, 0, 1310748, 1, 0, 1376284, 1, 0, 1441820, 1, 0, 1507356, 1, 0, 1572892, 1, 0, 1638428, 1, 0, 1703964, 1, 0)
 
 [connection signal="pressed" from="host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="join" to="." method="_on_join_pressed"]
@@ -135,4 +149,3 @@ shape = SubResource("RectangleShape2D_durd0")
 [connection signal="mouse_exited" from="button_sprite_1/host_area" to="." method="_on_host_area_mouse_exited"]
 [connection signal="mouse_entered" from="button_sprite_2/join_area" to="." method="_on_join_area_mouse_entered"]
 [connection signal="mouse_exited" from="button_sprite_2/join_area" to="." method="_on_join_area_mouse_exited"]
-[connection signal="body_entered" from="GhostDoor/door_area" to="." method="_on_door_area_body_entered"]

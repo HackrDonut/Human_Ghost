@@ -5,6 +5,10 @@ var peer = ENetMultiplayerPeer.new()
 @export var ghost_scene: PackedScene
 # @export var ip = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
 
+func _physics_process(delta):
+	pass
+	# print(player_scene.name)
+
 func _on_host_pressed():
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer
@@ -39,5 +43,12 @@ func _on_join_area_mouse_exited():
 	$button_sprite_2.play("join_idle")
 
 func _on_door_area_body_entered(body):
-	if body.name == "1": # Human, not ghost
-		body.velocity = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down") * 0
+	if Input.is_action_pressed("ui_right"):
+		if body.name == "1":
+			body.position.x = 220
+			
+			# print("GO WEST!!!")
+	# if body.name == "1": # Human, not ghost
+	# 	body.velocity.x = 0
+	# 	body.velocity.x = Input("ui_left") * 0
+	#	print(body.velocity)
