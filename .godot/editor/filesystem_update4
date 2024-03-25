@@ -1,5 +1,5 @@
 res://multiplayer_test.tscn
+res://multiplayer_test.gd
 res://ghost.tscn
 res://basic_player.tscn
 res://crate.tscn
-res://crate.gd

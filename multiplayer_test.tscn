@@ -104,6 +104,7 @@ sources/2 = SubResource("TileSetAtlasSource_8dl2u")
 script = ExtResource("1_lboko")
 player_scene = ExtResource("2_b43b3")
 ghost_scene = ExtResource("3_6eq2a")
+crate_scene = ExtResource("9_c48fs")
 
 [node name="host" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
