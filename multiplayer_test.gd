@@ -6,9 +6,6 @@ var peer = ENetMultiplayerPeer.new()
 @export var crate_scene: PackedScene
 # @export var ip = IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),1)
 
-func ready():
-	var crate = crate_scene.instantiate()
-
 func _on_host_pressed():
 	peer.create_server(135)
 	multiplayer.multiplayer_peer = peer
@@ -28,6 +25,9 @@ func _add_ghost(id = 1):
 	call_deferred("add_child",ghost)
 
 func _on_join_pressed():
+	var crate = crate_scene.instantiate()
+	crate.position.x = 50
+	crate.position.y = 50
 	peer.create_client("172.29.19.153", 135)
 	multiplayer.multiplayer_peer = peer
 

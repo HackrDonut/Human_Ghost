@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp1btd6ny74y8"]
+[gd_scene load_steps=6 format=3 uid="uid://bp1btd6ny74y8"]
 
 [ext_resource type="Texture2D" uid="uid://c5if0sovcgke" path="res://crate.png" id="1_ntf86"]
 [ext_resource type="Script" path="res://crate.gd" id="1_udd0s"]
@@ -8,6 +8,12 @@ size = Vector2(127, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ik62h"]
 size = Vector2(17, 123.5)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0fq2n"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
 
 [node name="crate" type="CharacterBody2D"]
 collision_layer = 3
@@ -29,5 +35,8 @@ shape = SubResource("RectangleShape2D_i30nr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_left"]
 position = Vector2(23, 81.75)
 shape = SubResource("RectangleShape2D_ik62h")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0fq2n")
 
 [connection signal="body_entered" from="area_left" to="." method="_on_area_left_body_entered"]
