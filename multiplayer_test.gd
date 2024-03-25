@@ -24,10 +24,13 @@ func _add_ghost(id = 1):
 	print(ghost.name)
 	call_deferred("add_child",ghost)
 
-func _on_join_pressed():
+func _add_crate(id = 1):
 	var crate = crate_scene.instantiate()
-	crate.position.x = 50
-	crate.position.y = 50
+	crate.name = str(id)
+	call_deferred("add_child",crate)
+
+func _on_join_pressed():
+	_add_crate()
 	peer.create_client("172.29.19.153", 135)
 	multiplayer.multiplayer_peer = peer
 
